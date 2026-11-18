@@ -1,0 +1,321 @@
+/* @react-starter/ui: tokens and component styles. Import once, at the app root. */
+
+.ui-theme {
+  --ui-seed: #315b54;
+  --ui-gap: 1rem;
+  --ui-inset: 1.5rem;
+  --ui-content-width: 47.5rem;
+  --ui-font: system-ui, sans-serif;
+  --ui-radius: 0.75rem;
+
+  /* Light palette, derived from the seed colour. */
+  --ui-primary: var(--ui-seed);
+  --ui-on-primary: #ffffff;
+  --ui-surface: color-mix(in srgb, var(--ui-seed) 3%, #ffffff);
+  --ui-surface-raised: #ffffff;
+  --ui-surface-muted: color-mix(in srgb, var(--ui-seed) 9%, #ffffff);
+  --ui-highlight: color-mix(in srgb, var(--ui-seed) 20%, #ffffff);
+  --ui-text: #171d1b;
+  --ui-text-muted: #404946;
+  --ui-outline: color-mix(in srgb, var(--ui-seed) 30%, #8a938f);
+  --ui-error: #a3261d;
+
+  color-scheme: light;
+  min-height: 100vh;
+  background: var(--ui-surface);
+  color: var(--ui-text);
+  font-family: var(--ui-font);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.ui-theme[data-ui-scheme='dark'] {
+  --ui-primary: color-mix(in srgb, var(--ui-seed) 45%, #ffffff);
+  --ui-on-primary: #0d1513;
+  --ui-surface: color-mix(in srgb, var(--ui-seed) 12%, #0f1413);
+  --ui-surface-raised: color-mix(in srgb, var(--ui-seed) 16%, #161c1a);
+  --ui-surface-muted: color-mix(in srgb, var(--ui-seed) 22%, #1c2321);
+  --ui-highlight: color-mix(in srgb, var(--ui-seed) 45%, #1c2321);
+  --ui-text: #e6ebe9;
+  --ui-text-muted: #bfc9c5;
+  --ui-outline: color-mix(in srgb, var(--ui-seed) 40%, #8a938f);
+  --ui-error: #ffb4a9;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  .ui-theme[data-ui-scheme='system'] {
+    --ui-primary: color-mix(in srgb, var(--ui-seed) 45%, #ffffff);
+    --ui-on-primary: #0d1513;
+    --ui-surface: color-mix(in srgb, var(--ui-seed) 12%, #0f1413);
+    --ui-surface-raised: color-mix(in srgb, var(--ui-seed) 16%, #161c1a);
+    --ui-surface-muted: color-mix(in srgb, var(--ui-seed) 22%, #1c2321);
+    --ui-highlight: color-mix(in srgb, var(--ui-seed) 45%, #1c2321);
+    --ui-text: #e6ebe9;
+    --ui-text-muted: #bfc9c5;
+    --ui-outline: color-mix(in srgb, var(--ui-seed) 40%, #8a938f);
+    --ui-error: #ffb4a9;
+    color-scheme: dark;
+  }
+}
+
+.ui-theme *,
+.ui-theme *::before,
+.ui-theme *::after {
+  box-sizing: border-box;
+}
+
+.ui-theme :focus-visible {
+  outline: 0.1875rem solid var(--ui-primary);
+  outline-offset: 0.125rem;
+}
+
+.ui-page-bar {
+  padding: 0.75rem var(--ui-inset);
+  border-bottom: 1px solid var(--ui-outline);
+  background: var(--ui-surface-raised);
+}
+
+.ui-page-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.ui-content-area {
+  max-width: var(--ui-content-width);
+  margin-inline: auto;
+  padding: var(--ui-inset);
+}
+
+.ui-section,
+.ui-async {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-gap);
+}
+
+.ui-section > *,
+.ui-async > * {
+  margin: 0;
+}
+
+.ui-async-error:empty {
+  display: none;
+}
+
+.ui-action-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ui-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ui-heading > * {
+  margin: 0;
+}
+
+.ui-eyebrow {
+  color: var(--ui-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.ui-heading-title {
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 600;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.ui-heading-description,
+.ui-body {
+  font-size: 1rem;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.ui-heading-description {
+  color: var(--ui-text-muted);
+}
+
+.ui-error {
+  margin: 0;
+  color: var(--ui-error);
+}
+
+.ui-card {
+  border: 1px solid var(--ui-outline);
+  border-radius: var(--ui-radius);
+  background: var(--ui-surface-raised);
+  color: inherit;
+}
+
+.ui-card-padded {
+  padding: var(--ui-inset);
+}
+
+.ui-button {
+  /* A comfortable touch target at any text size. */
+  min-height: 2.75rem;
+  padding: 0.5rem 1.25rem;
+  border: 0;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+}
+
+.ui-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.ui-button-primary {
+  background: var(--ui-primary);
+  color: var(--ui-on-primary);
+}
+
+.ui-button-text {
+  background: transparent;
+  color: var(--ui-primary);
+}
+
+.ui-button-text:hover:not(:disabled) {
+  background: var(--ui-surface-muted);
+}
+
+.ui-align-start {
+  align-self: flex-start;
+}
+
+.ui-tile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.25rem;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.ui-tile:hover {
+  background: var(--ui-surface-muted);
+}
+
+.ui-tile-mark {
+  flex: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 0.125rem solid var(--ui-primary);
+  border-radius: 50%;
+}
+
+.ui-tile-mark[data-highlighted='true'] {
+  background: var(--ui-primary);
+}
+
+.ui-tile-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.ui-tile-title {
+  font-size: 1rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.ui-tile-arrow {
+  flex: none;
+}
+
+.ui-badge {
+  align-self: flex-start;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.5rem;
+  background: var(--ui-surface-muted);
+  color: var(--ui-text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.ui-badge[data-highlighted='true'] {
+  background: var(--ui-highlight);
+  color: var(--ui-text);
+}
+
+.ui-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.ui-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.ui-textarea {
+  width: 100%;
+  min-height: 4.5rem;
+  padding: 0.75rem;
+  border: 1px solid var(--ui-outline);
+  border-radius: 0.5rem;
+  background: var(--ui-surface-raised);
+  color: inherit;
+  font: inherit;
+  resize: vertical;
+}
+
+.ui-textarea:read-only {
+  background: var(--ui-surface-muted);
+}
+
+.ui-progress {
+  width: 100%;
+  height: 0.25rem;
+  accent-color: var(--ui-primary);
+}
+
+.ui-notice {
+  position: fixed;
+  inset-inline: 1rem;
+  bottom: 1rem;
+  max-width: 30rem;
+  margin-inline: auto;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: var(--ui-text);
+  color: var(--ui-surface);
+}
+
+.ui-notice[data-visible='false'] {
+  /* Kept in the accessibility tree so the next message is announced. */
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ui-button,
+  .ui-tile {
+    transition: background-color 120ms ease;
+  }
+}

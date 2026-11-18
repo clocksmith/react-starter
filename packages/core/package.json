@@ -1,0 +1,17 @@
+{
+  "name": "@react-starter/core",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Framework-free session lifecycle, typed failures and safe diagnostics.",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ]
+}

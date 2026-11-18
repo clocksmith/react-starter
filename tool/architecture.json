@@ -1,0 +1,125 @@
+{
+  "sourceRoots": ["packages/core/src", "packages/ui/src", "example/src"],
+  "extensions": [".ts", ".tsx"],
+  "workspaces": ["packages/core", "packages/ui", "example"],
+  "workspacePackages": {
+    "@react-starter/core": {
+      "root": "packages/core",
+      "layer": "core",
+      "entries": ["."],
+      "dependencies": [],
+      "peerDependencies": []
+    },
+    "@react-starter/ui": {
+      "root": "packages/ui",
+      "layer": "ui",
+      "entries": [".", "./styles.css"],
+      "dependencies": [],
+      "peerDependencies": ["react"]
+    }
+  },
+  "layers": {
+    "core": {
+      "paths": ["^packages/core/src/"],
+      "dependsOn": ["core"],
+      "packages": []
+    },
+    "ui": {
+      "paths": ["^packages/ui/src/"],
+      "dependsOn": ["ui"],
+      "packages": ["react"],
+      "markup": true
+    },
+    "domain": {
+      "paths": ["^example/src/features/[^/]+/domain/"],
+      "dependsOn": ["core", "domain"],
+      "packages": []
+    },
+    "application": {
+      "paths": ["^example/src/features/[^/]+/application/", "^example/src/application/"],
+      "dependsOn": ["core", "domain", "application"],
+      "packages": []
+    },
+    "infrastructure": {
+      "paths": ["^example/src/features/[^/]+/infrastructure/"],
+      "dependsOn": ["core", "domain", "infrastructure"],
+      "packages": [],
+      "platform": true
+    },
+    "presentation": {
+      "paths": ["^example/src/features/[^/]+/presentation/"],
+      "dependsOn": ["core", "ui", "domain", "application", "presentation", "l10n"],
+      "packages": ["react"],
+      "reactSymbols": [
+        "createContext",
+        "useCallback",
+        "useContext",
+        "useEffect",
+        "useId",
+        "useMemo",
+        "useReducer",
+        "useRef",
+        "useState",
+        "useSyncExternalStore",
+        "ReactNode"
+      ]
+    },
+    "composition": {
+      "paths": ["^example/src/app/", "^example/src/main\\.tsx$", "^example/src/vite-env\\.d\\.ts$"],
+      "dependsOn": [
+        "core",
+        "ui",
+        "domain",
+        "application",
+        "infrastructure",
+        "presentation",
+        "composition",
+        "design",
+        "l10n"
+      ],
+      "packages": ["react", "react-dom/client"],
+      "platform": true,
+      "reactSymbols": [
+        "Fragment",
+        "StrictMode",
+        "createContext",
+        "useCallback",
+        "useContext",
+        "useEffect",
+        "useMemo",
+        "useRef",
+        "useState",
+        "useSyncExternalStore",
+        "ReactNode"
+      ]
+    },
+    "design": {
+      "paths": ["^example/src/design_system/"],
+      "dependsOn": ["ui", "design"],
+      "packages": []
+    },
+    "l10n": {
+      "paths": ["^example/src/l10n/"],
+      "dependsOn": ["core", "l10n"],
+      "packages": []
+    }
+  },
+  "platformGlobals": [
+    "window",
+    "document",
+    "navigator",
+    "location",
+    "history",
+    "localStorage",
+    "sessionStorage",
+    "indexedDB",
+    "caches",
+    "fetch",
+    "XMLHttpRequest",
+    "WebSocket",
+    "EventSource",
+    "crypto",
+    "process"
+  ],
+  "markupAttributes": ["className", "style", "dangerouslySetInnerHTML"]
+}
